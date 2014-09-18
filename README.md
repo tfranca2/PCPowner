@@ -1,4 +1,4 @@
 PCPowner
 ========
 
-Trabalho de Faculdade - Sistema de PCP, planejamento e controle de produção
+Trabalho de Faculdade - Sistema de PCP(Planejamento e Controle de Produção)
