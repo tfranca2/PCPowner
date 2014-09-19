@@ -38,6 +38,10 @@ public class ControleCliente {
 		return null;
 	}
 	
+	public String cancelar(){
+		return "listarClientes";
+	}
+	
 	public List<Cliente> getClientes() {
 		clientes = repositorioCliente.listarTodos();
 		return clientes;

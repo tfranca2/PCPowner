@@ -17,8 +17,15 @@
 				<h:outputText value="Idade: "/>
 				<h:inputText value="#{controleCliente.cliente.idade}" /> <br />
 				<br/>
-				<h:commandButton action="#{controleCliente.salvar}" value="Salvar" styleClass="btn btn-success"/>
-				<h:commandButton value="Cancelar" styleClass="btn btn-danger"/>
+					
+				<span class="icon-ok"></span>
+				<h:commandButton action="#{controleCliente.salvar}" value="Salvar" 
+											styleClass="btn btn-link margin-10" />
+				/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="icon-remove"></span>
+				<h:commandButton action="#{controleCliente.cancelar}" value="Cancelar" 
+											styleClass="btn btn-link margin-10" />
+											
 			</h:form>
 	
 		</ui:define>

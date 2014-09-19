@@ -6,6 +6,8 @@
 
 .jumbotron {
 	min-height: 450px;
+	padding-left: 40px;
+	padding-top: 15px;
 }
 
 .jumbotron .btn {
@@ -73,4 +75,11 @@ ul {
 
 .label {
 	margin: -4px 0px 0px 4px;
+}
+
+.margin-10{
+	margin: -10px;
+}
+.floatright{
+	float: right;
 }
