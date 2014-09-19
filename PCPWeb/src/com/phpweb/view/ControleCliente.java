@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.model.DataModel;
 
 import com.exemplo.entidade.Cliente;
 import com.exemplo.repositorio.RepositorioCliente;
