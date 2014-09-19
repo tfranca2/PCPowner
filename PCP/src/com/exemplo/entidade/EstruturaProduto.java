@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,13 +16,13 @@ public class EstruturaProduto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idCliente")
 	private int id;
-	@Column
+	@OneToOne
 	private Produto produtoPai;
-	@Column
+	@OneToOne
 	private Produto produtoFilho;
-	@Column
+	@OneToOne
 	private Volume volumePai;
-	@Column
+	@OneToOne
 	private Volume volumeFilho;
 	@Column
 	private float conversor;

@@ -1,5 +1,9 @@
 package com.exemplo.testes;
 
+import java.util.List;
+
+import com.exemplo.entidade.Cliente;
+import com.exemplo.repositorio.RepositorioCliente;
 
 public class Teste {
 
@@ -7,7 +11,7 @@ public class Teste {
 //		RepositorioCliente repositorioCliente = new RepositorioCliente();
 		
 //		Cliente cliente = new Cliente();
-//		cliente.setNome("Beltrano da Silva");
+//		cliente.setNome("Ciclano da Silva");
 //		cliente.setIdade(20);
 //		repositorioCliente.salvar(cliente);
 	

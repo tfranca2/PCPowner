@@ -15,7 +15,7 @@ public class RepositorioCliente {
 	EntityManager em;
 	
 	public RepositorioCliente(){
-		emf = Persistence.createEntityManagerFactory("loja");
+		emf = Persistence.createEntityManagerFactory("pcp");
 		em = emf.createEntityManager();
 	}
 
