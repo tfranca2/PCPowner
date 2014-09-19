@@ -1,6 +1,8 @@
 package com.exemplo.entidade;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -41,7 +43,7 @@ public class Produto {
 	private boolean controleDeQualidade;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.produto")
-	private Set<FornecedorProduto> fornecedorProdutos = new HashSet<FornecedorProduto>(0);
+	private List<FornecedorProduto> fornecedorProdutos = new ArrayList<FornecedorProduto>();
 	
 	@Column
 	private int estoqueMinimo;
@@ -129,12 +131,13 @@ public class Produto {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public Set<FornecedorProduto> getFornecedorProdutos() {
+	public List<FornecedorProduto> getFornecedorProdutos() {
 		return fornecedorProdutos;
 	}
-	public void setFornecedorProdutos(Set<FornecedorProduto> fornecedorProdutos) {
+	public void setFornecedorProdutos(List<FornecedorProduto> fornecedorProdutos) {
 		this.fornecedorProdutos = fornecedorProdutos;
 	}
+
 
 	
 	

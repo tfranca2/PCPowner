@@ -1,6 +1,8 @@
 package com.exemplo.entidade;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -41,7 +43,7 @@ public class Fornecedor {
 //	private List<Contato> contatos;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.fornecedor", cascade=CascadeType.ALL)
-	private Set<FornecedorProduto> fornecedorProdutos = new HashSet<FornecedorProduto>(0);
+	private List<FornecedorProduto> fornecedorProdutos = new ArrayList<FornecedorProduto>();
 	
 	public int getId() {
 		return id;
@@ -91,10 +93,10 @@ public class Fornecedor {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public Set<FornecedorProduto> getFornecedorProdutos() {
+	public List<FornecedorProduto> getFornecedorProdutos() {
 		return fornecedorProdutos;
 	}
-	public void setFornecedorProdutos(Set<FornecedorProduto> fornecedorProdutos) {
+	public void setFornecedorProdutos(List<FornecedorProduto> fornecedorProdutos) {
 		this.fornecedorProdutos = fornecedorProdutos;
 	}
 }
