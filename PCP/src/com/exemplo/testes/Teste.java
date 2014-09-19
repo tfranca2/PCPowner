@@ -1,32 +1,29 @@
 package com.exemplo.testes;
 
-import java.util.List;
-
-import com.exemplo.entidade.Cliente;
-import com.exemplo.repositorio.RepositorioCliente;
 
 public class Teste {
 
 	public static void main(String[] args) {
-//		RepositorioCliente repositorioCliente = new RepositorioCliente();
+//		RepositorioCidade repositorioCidade = new RepositorioCidade();
 		
-//		Cliente cliente = new Cliente();
-//		cliente.setNome("Ciclano da Silva");
-//		cliente.setIdade(20);
-//		repositorioCliente.salvar(cliente);
-	
-//		List<Cliente> clientes = repositorioCliente.listarTodos();
-//		for (Cliente cliente : clientes) {
-//			System.out.println(cliente.getNome());
+//		Cidade cidade = new Cidade();
+//		cidade.setCidade("Fortaleza");
+//		cidade.setRais("23-543521");
+//		cidade.setUf("CE");
+//		repositorioCidade.salvar(cidade);
+		
+//		List<Cidade> cidades = repositorioCidade.listarTodos();
+//		for (Cidade cidade : cidades) {
+//			System.out.println(cidade.getCidade());
 //		}
 		
 //		Cliente cliente = repositorioCliente.ObterPorId(2);
 //		System.out.println(cliente.getNome());
 
-//		Cliente cliente = repositorioCliente.ObterPorId(2);
-//		cliente.setNome("Beltrano de Souza");
-//		repositorioCliente.salvar(cliente);		
-//		System.out.println(cliente.getNome());
+//		Cidade cidade = repositorioCidade.ObterPorId(2);
+//		cidade.setRais("23-334423");;
+//		repositorioCidade.salvar(cidade);		
+//		System.out.println(cidade.getRais());
 		
 //		Cliente cliente = repositorioCliente.ObterPorId(2);
 //		repositorioCliente.remover(cliente);
