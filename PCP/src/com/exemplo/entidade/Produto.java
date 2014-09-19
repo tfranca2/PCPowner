@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,8 +27,8 @@ public class Produto {
 	private Volume volume;
 	@Column
 	private String codigoDeBarras;
-//	@OneToOne
-//	private Tipo tipo;
+	@Enumerated(EnumType.ORDINAL)
+	private Tipo tipo;
 	@Column
 	private float pesoLiquido;
 	@Column
@@ -70,12 +72,12 @@ public class Produto {
 	public void setCodigoDeBarras(String codigoDeBarras) {
 		this.codigoDeBarras = codigoDeBarras;
 	}
-//	public Tipo getTipo() {
-//		return tipo;
-//	}
-//	public void setTipo(Tipo tipo) {
-//		this.tipo = tipo;
-//	}
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 	public float getPesoLiquido() {
 		return pesoLiquido;
 	}
@@ -131,25 +133,16 @@ public class Produto {
 		this.ativo = ativo;
 	}
 	
-//	@Override
-//	public String toString() {
-//		return "Produto [id=" + id + ", produto=" + produto + ", volume="
-//				+ volume + ", codigoDeBarras=" + codigoDeBarras + ", tipo="
-//				+ tipo + ", pesoLiquido=" + pesoLiquido + ", pesoBruto="
-//				+ pesoBruto + ", fatorCaixa=" + fatorCaixa + ", fatorPallet="
-//				+ fatorPallet + ", controleDeQualidade=" + controleDeQualidade
-//				+ ", fornecedores=" + fornecedores + ", estoqueMinimo="
-//				+ estoqueMinimo + ", validade=" + validade + ", ativo=" + ativo
-//				+ "]";
-//	}
-//}
-//
-//enum Tipo { 
-//	Acabado(1), Elaboracao(2), Embalagem(3), Imobilizado(4); 
-//	public int valorTipo; 
-//	
-//	Tipo(int valor) { 
-//		valorTipo = valor; 
-//	} 
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", produto=" + produto + ", volume="
+				+ volume + ", codigoDeBarras=" + codigoDeBarras + ", tipo="
+				+ tipo + ", pesoLiquido=" + pesoLiquido + ", pesoBruto="
+				+ pesoBruto + ", fatorCaixa=" + fatorCaixa + ", fatorPallet="
+				+ fatorPallet + ", controleDeQualidade=" + controleDeQualidade
+				+ ", fornecedores=" + fornecedores + ", estoqueMinimo="
+				+ estoqueMinimo + ", validade=" + validade + ", ativo=" + ativo
+				+ "]";
+	}
 }
 
