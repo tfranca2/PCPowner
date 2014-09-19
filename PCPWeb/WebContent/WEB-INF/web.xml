@@ -23,6 +23,10 @@
     <url-pattern>*.xhtml</url-pattern>
     <url-pattern>*.xhtm</url-pattern>
   </servlet-mapping>
+    <context-param>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>none</param-value>
+  </context-param>
   <context-param>
     <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
     <param-name>javax.faces.STATE_SAVING_METHOD</param-name>

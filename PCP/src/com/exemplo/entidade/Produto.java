@@ -1,9 +1,11 @@
 package com.exemplo.entidade;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,8 +39,10 @@ public class Produto {
 	private int fatorPallet;
 	@Column
 	private boolean controleDeQualidade;
-	@OneToMany
-	private List<Fornecedor> fornecedores;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.produto")
+	private Set<FornecedorProduto> fornecedorProdutos = new HashSet<FornecedorProduto>(0);
+	
 	@Column
 	private int estoqueMinimo;
 	@Column
@@ -106,12 +110,7 @@ public class Produto {
 	public void setControleDeQualidade(boolean controleDeQualidade) {
 		this.controleDeQualidade = controleDeQualidade;
 	}
-	public List<Fornecedor> getFornecedores() {
-		return fornecedores;
-	}
-	public void setFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
-	}
+
 	public int getEstoqueMinimo() {
 		return estoqueMinimo;
 	}
@@ -130,6 +129,15 @@ public class Produto {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	public Set<FornecedorProduto> getFornecedorProdutos() {
+		return fornecedorProdutos;
+	}
+	public void setFornecedorProdutos(Set<FornecedorProduto> fornecedorProdutos) {
+		this.fornecedorProdutos = fornecedorProdutos;
+	}
+
+	
+	
 	
 //	@Override
 //	public String toString() {

@@ -1,9 +1,12 @@
 package com.exemplo.entidade;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,10 +35,13 @@ public class Fornecedor {
 	private int prazoEntrega;
 	@Column
 	private boolean ativo;
-	@OneToMany
-	private List<Endereco> enderecos;
-	@OneToMany
-	private List<Contato> contatos;
+//	@OneToMany
+//	private List<Endereco> enderecos;
+//	@OneToMany
+//	private List<Contato> contatos;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.fornecedor", cascade=CascadeType.ALL)
+	private Set<FornecedorProduto> fornecedorProdutos = new HashSet<FornecedorProduto>(0);
 	
 	public int getId() {
 		return id;
@@ -85,26 +91,10 @@ public class Fornecedor {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public List<Endereco> getEnderecos() {
-		return enderecos;
+	public Set<FornecedorProduto> getFornecedorProdutos() {
+		return fornecedorProdutos;
 	}
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
-	}
-	public List<Contato> getContatos() {
-		return contatos;
-	}
-	public void setContatos(List<Contato> contatos) {
-		this.contatos = contatos;
-	}
-	
-	@Override
-	public String toString() {
-		return "Fornecedor [id=" + id + ", nomeFantasia=" + nomeFantasia
-				+ ", razaoSocial=" + razaoSocial + ", cpfCnpj=" + cpfCnpj
-				+ ", inscricaoEstadual=" + inscricaoEstadual
-				+ ", inscricaoMunicipal=" + inscricaoMunicipal
-				+ ", prazoEntrega=" + prazoEntrega + ", ativo=" + ativo
-				+ ", enderecos=" + enderecos + ", contatos=" + contatos + "]";
+	public void setFornecedorProdutos(Set<FornecedorProduto> fornecedorProdutos) {
+		this.fornecedorProdutos = fornecedorProdutos;
 	}
 }
