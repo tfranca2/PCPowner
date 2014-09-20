@@ -1,13 +1,17 @@
 package com.exemplo.entidade;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,8 +41,10 @@ public class Produto {
 	private int fatorPallet;
 	@Column
 	private boolean controleDeQualidade;
-	@ManyToMany
-	private List<Fornecedor> fornecedores;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.produto")
+	private List<FornecedorProduto> fornecedorProdutos = new ArrayList<FornecedorProduto>();
+	
 	@Column
 	private int estoqueMinimo;
 	@Column
@@ -106,12 +112,7 @@ public class Produto {
 	public void setControleDeQualidade(boolean controleDeQualidade) {
 		this.controleDeQualidade = controleDeQualidade;
 	}
-	public List<Fornecedor> getFornecedores() {
-		return fornecedores;
-	}
-	public void setFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
-	}
+
 	public int getEstoqueMinimo() {
 		return estoqueMinimo;
 	}
@@ -130,6 +131,16 @@ public class Produto {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	public List<FornecedorProduto> getFornecedorProdutos() {
+		return fornecedorProdutos;
+	}
+	public void setFornecedorProdutos(List<FornecedorProduto> fornecedorProdutos) {
+		this.fornecedorProdutos = fornecedorProdutos;
+	}
+
+
+	
+	
 	
 //	@Override
 //	public String toString() {
@@ -142,7 +153,7 @@ public class Produto {
 //				+ estoqueMinimo + ", validade=" + validade + ", ativo=" + ativo
 //				+ "]";
 //	}
-//}
+}
 //
 //enum Tipo { 
 //	Acabado(1), Elaboracao(2), Embalagem(3), Imobilizado(4); 
@@ -151,5 +162,4 @@ public class Produto {
 //	Tipo(int valor) { 
 //		valorTipo = valor; 
 //	} 
-}
-
+//}
