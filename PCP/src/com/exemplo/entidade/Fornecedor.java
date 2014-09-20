@@ -19,23 +19,23 @@ public class Fornecedor {
 	@Column(name="idFornecedor")
 	private int id;
 	@Column
-	private String nomeFantasia;
+	private String cpfCnpj;
 	@Column
 	private String razaoSocial;
 	@Column
-	private String cpfCnpj;
+	private String nomeFantasia;
 	@Column
 	private String inscricaoEstadual;
 	@Column
 	private String inscricaoMunicipal;
-	@Column
-	private int prazoEntrega;
-	@Column
-	private boolean ativo;
 	@OneToMany
 	private List<Endereco> enderecos;
 	@OneToMany
 	private List<Contato> contatos;
+	@Column
+	private int prazoEntrega;
+	@Column
+	private boolean ativo;
 	
 	public int getId() {
 		return id;

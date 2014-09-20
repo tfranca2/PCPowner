@@ -20,6 +20,13 @@ public class Volume { //pacote; caixa; garrafa; bobina; etc...
 	@Column
 	private String abreviatura;
 	
+	public Volume(){ }
+	
+	public Volume(String descricao, String abreviatura){
+		this.volume = descricao;
+		this.abreviatura = abreviatura;
+	}
+	
 	public int getId() {
 		return id;
 	}
