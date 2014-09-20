@@ -1,36 +1,40 @@
 package com.exemplo.testes;
 
-import java.util.List;
+import java.util.Date;
 
-import com.exemplo.entidade.Cliente;
-import com.exemplo.repositorio.RepositorioCliente;
+import com.exemplo.entidade.Fornecedor;
+import com.exemplo.entidade.FornecedorProduto;
+import com.exemplo.entidade.Produto;
+import com.exemplo.repositorio.FornecedorService;
+
+
 
 public class Teste {
-
 	public static void main(String[] args) {
-//		RepositorioCliente repositorioCliente = new RepositorioCliente();
-		
-//		Cliente cliente = new Cliente();
-//		cliente.setNome("Ciclano da Silva");
-//		cliente.setIdade(20);
-//		repositorioCliente.salvar(cliente);
-	
-//		List<Cliente> clientes = repositorioCliente.listarTodos();
-//		for (Cliente cliente : clientes) {
-//			System.out.println(cliente.getNome());
-//		}
-		
-//		Cliente cliente = repositorioCliente.ObterPorId(2);
-//		System.out.println(cliente.getNome());
+		FornecedorService service = new FornecedorService();
 
-//		Cliente cliente = repositorioCliente.ObterPorId(2);
-//		cliente.setNome("Beltrano de Souza");
-//		repositorioCliente.salvar(cliente);		
-//		System.out.println(cliente.getNome());
-		
-//		Cliente cliente = repositorioCliente.ObterPorId(2);
-//		repositorioCliente.remover(cliente);
-		
+		service.getEm().getTransaction().begin();
+
+		Fornecedor fornecedor = new Fornecedor();
+		fornecedor.setAtivo(true);
+		fornecedor.setNomeFantasia("");
+        Produto produto1 = new Produto();
+        service.getEm().persist(produto1);
+        
+        FornecedorProduto fornecedorProduto = new FornecedorProduto();
+        
+        fornecedorProduto.setFornecedor(fornecedor);
+        fornecedorProduto.setProduto(produto1);
+        fornecedorProduto.setDataCriacao(new Date());
+        
+        
+        fornecedor.getFornecedorProdutos().add(fornecedorProduto);
+        
+        service.getEm().persist(fornecedor);
+       
+        service.getEm().getTransaction().commit();
+		System.out.println("Done");
+			
 	}
 
 }
