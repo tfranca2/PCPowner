@@ -3,7 +3,6 @@
 	<name>PCPWeb</name>
 	<comment></comment>
 	<projects>
-		<project>PCP</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

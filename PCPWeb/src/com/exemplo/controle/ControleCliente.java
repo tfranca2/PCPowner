@@ -29,7 +29,8 @@ public class ControleCliente {
 		return "listarClientes";
 	}
 
-	public String editar(){
+	public String editar(Cliente cliente){
+		this.cliente = cliente;
 		return "formularioCliente";
 	}
 	
