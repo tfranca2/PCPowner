@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="etapa")
-public class EtapaDeProcesso {
+public class EtapaProcesso {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

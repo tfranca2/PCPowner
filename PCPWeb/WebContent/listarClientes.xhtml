@@ -27,9 +27,7 @@
 						#{cliente.idade}
 					</h:column>
 					<h:column>
-						<h:commandLink action="#{controleCliente.editar}">
-							<f:setPropertyActionListener value="#{cliente}" 
-										target="#{controleCliente.cliente}" />
+						<h:commandLink action="#{controleCliente.editar(cliente)}">
 							<span class="icon-pencil"></span>
 							Editar
 						</h:commandLink>

@@ -1,8 +1,4 @@
-<<<<<<< HEAD:PCPWeb/src/com/exemplo/controle/ControleCliente.java
 package com.exemplo.controle;
-=======
-package com.phpweb.view;
->>>>>>> f3aab3a2c6d958b64d23cd1913b8b03d2dc1e938:PCPWeb/src/com/phpweb/view/ControleCliente.java
 
 import java.util.List;
 
@@ -33,7 +29,8 @@ public class ControleCliente {
 		return "listarClientes";
 	}
 
-	public String editar(){
+	public String editar(Cliente cliente){
+		this.cliente = cliente;
 		return "formularioCliente";
 	}
 	
@@ -42,13 +39,10 @@ public class ControleCliente {
 		return null;
 	}
 	
-<<<<<<< HEAD:PCPWeb/src/com/exemplo/controle/ControleCliente.java
 	public String cancelar(){
 		return "listarClientes";
 	}
 	
-=======
->>>>>>> f3aab3a2c6d958b64d23cd1913b8b03d2dc1e938:PCPWeb/src/com/phpweb/view/ControleCliente.java
 	public List<Cliente> getClientes() {
 		clientes = repositorioCliente.listarTodos();
 		return clientes;
@@ -67,7 +61,3 @@ public class ControleCliente {
 	}
 	
 }
-<<<<<<< HEAD:PCPWeb/src/com/exemplo/controle/ControleCliente.java
-=======
-
->>>>>>> f3aab3a2c6d958b64d23cd1913b8b03d2dc1e938:PCPWeb/src/com/phpweb/view/ControleCliente.java
