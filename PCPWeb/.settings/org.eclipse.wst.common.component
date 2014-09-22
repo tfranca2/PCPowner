@@ -2,7 +2,7 @@
     <wb-module deploy-name="PCPWeb">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="PCPWeb"/>
         <property name="java-output-path" value="/PCPWeb/build/classes"/>
+        <property name="context-root" value="PCPWeb"/>
     </wb-module>
 </project-modules>
