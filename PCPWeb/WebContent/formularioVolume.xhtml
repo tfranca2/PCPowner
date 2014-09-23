@@ -8,27 +8,24 @@
 
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
-		
-			<h4 class="muted">Cadastro de <span class="i">Cliente</span></h4>
+		    <h4 class="muted">Cadastro de <span class="i">Volume</span></h4>
 			<br/>
 			<h:form>
-				<h:outputText value="Nome: "/> 
-				<h:inputText value="#{controleCliente.cliente.nome}" /> <br />
-				<h:outputText value="Idade: "/>
-				<h:inputText value="#{controleCliente.cliente.idade}" /> <br />
-				<br/>
+				<h:outputText value="Volume: " />
+				<h:inputText value="#{controleVolume.volume.volume}" /> <br />
+				<h:outputText value="Abreviatura: " />
+				<h:inputText value="#{controleVolume.volume.abreviatura}" /> <br />
+				<br />
 					
 				<span class="icon-ok"></span>
-				<h:commandButton action="#{controleCliente.salvar}" value="Salvar" 
+				<h:commandButton action="#{controleVolume.salvar}" value="Salvar" 
 											styleClass="btn btn-link margin-10" />
 				/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<span class="icon-remove"></span>
-				<h:commandButton action="#{controleCliente.cancelar}" value="Cancelar" 
+				<h:commandButton action="#{controleVolume.cancelar}" value="Cancelar" 
 											styleClass="btn btn-link margin-10" />
-											
+				
 			</h:form>
-	
 		</ui:define>
 	</ui:composition>
-
 </html>

@@ -9,30 +9,30 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
 		
-			<h4 class="muted">Listagem de <span class="i">Clientes</span></h4>
+			<h4 class="muted">Listagem de <span class="i">Volumes</span></h4>
 			<br/>
 			<h:form>
-				<h:dataTable value="#{controleCliente.clientes}" var="cliente" 
+				<h:dataTable value="#{controleVolume.volumes}" var="volume" 
 									styleClass="table">
 					<h:column>
 						<f:facet name="header">Código</f:facet>
-						#{cliente.id}
+						#{volume.id}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Nome</f:facet>
-						#{cliente.nome}
+						<f:facet name="header">Volume</f:facet>
+						#{volume.volume}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Idade</f:facet>
-						#{cliente.idade}
+						<f:facet name="header">Abreviatura</f:facet>
+						#{volume.abreviatura}
 					</h:column>
 					<h:column>
-						<h:commandLink action="#{controleCliente.editar(cliente)}">
+						<h:commandLink action="#{controleVolume.editar(volume)}">
 							<span class="icon-pencil"></span>
 							Editar
 						</h:commandLink>
 						/
-						<h:commandLink action="#{controleCliente.remover(cliente)}">
+						<h:commandLink action="#{controleVolume.remover(volume)}">
 							<span class="icon-trash"></span>
 							Remover
 						</h:commandLink>

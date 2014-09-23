@@ -9,30 +9,34 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
 		
-			<h4 class="muted">Listagem de <span class="i">Clientes</span></h4>
+			<h4 class="muted">Listagem de <span class="i">Cidades</span></h4>
 			<br/>
 			<h:form>
-				<h:dataTable value="#{controleCliente.clientes}" var="cliente" 
+				<h:dataTable value="#{controleCidade.cidades}" var="cidade" 
 									styleClass="table">
 					<h:column>
 						<f:facet name="header">Código</f:facet>
-						#{cliente.id}
+						#{cidade.id}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Nome</f:facet>
-						#{cliente.nome}
+						<f:facet name="header">Cidade</f:facet>
+						#{cidade.cidade}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Idade</f:facet>
-						#{cliente.idade}
+						<f:facet name="header">UF</f:facet>
+						#{cidade.uf}
 					</h:column>
 					<h:column>
-						<h:commandLink action="#{controleCliente.editar(cliente)}">
+						<f:facet name="header">Rais - Município</f:facet>
+						#{cidade.rais}
+					</h:column>
+					<h:column>
+						<h:commandLink action="#{controleCidade.editar(cidade)}">
 							<span class="icon-pencil"></span>
 							Editar
 						</h:commandLink>
 						/
-						<h:commandLink action="#{controleCliente.remover(cliente)}">
+						<h:commandLink action="#{controleCidade.remover(cidade)}">
 							<span class="icon-trash"></span>
 							Remover
 						</h:commandLink>

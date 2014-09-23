@@ -9,30 +9,34 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
 		
-			<h4 class="muted">Listagem de <span class="i">Clientes</span></h4>
+			<h4 class="muted">Listagem de <span class="i">Fornecedores</span></h4>
 			<br/>
 			<h:form>
-				<h:dataTable value="#{controleCliente.clientes}" var="cliente" 
+				<h:dataTable value="#{controleFornecedor.fornecedores}" var="fornecedor" 
 									styleClass="table">
 					<h:column>
 						<f:facet name="header">Código</f:facet>
-						#{cliente.id}
+						#{fornecedor.id}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Nome</f:facet>
-						#{cliente.nome}
+						<f:facet name="header">Nome Fantasia</f:facet>
+						#{fornecedor.nomeFantasia}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Idade</f:facet>
-						#{cliente.idade}
+						<f:facet name="header">Razão Social</f:facet>
+						#{fornecedor.razaoSocial}
 					</h:column>
 					<h:column>
-						<h:commandLink action="#{controleCliente.editar(cliente)}">
+						<f:facet name="header">CPF / CNPJ</f:facet>
+						#{fornecedor.cpfCnpj}
+					</h:column>
+					<h:column>
+						<h:commandLink action="#{controleFornecedor.editar(fornecedor)}">
 							<span class="icon-pencil"></span>
 							Editar
 						</h:commandLink>
 						/
-						<h:commandLink action="#{controleCliente.remover(cliente)}">
+						<h:commandLink action="#{controleFornecedor.remover(fornecedor)}">
 							<span class="icon-trash"></span>
 							Remover
 						</h:commandLink>

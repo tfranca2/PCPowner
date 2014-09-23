@@ -2,6 +2,7 @@ package com.exemplo.entidade;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,9 +29,9 @@ public class Fornecedor {
 	private String inscricaoEstadual;
 	@Column
 	private String inscricaoMunicipal;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Endereco> enderecos;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Contato> contatos;
 	@Column
 	private int prazoEntrega;

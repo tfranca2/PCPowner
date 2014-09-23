@@ -34,7 +34,7 @@ public class ControleCliente {
 		return "formularioCliente";
 	}
 	
-	public String remover(){
+	public String remover(Cliente cliente){
 		repositorioCliente.remover(cliente);
 		return null;
 	}
