@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="template.xhtml">
+		<ui:define name="conteudo">
+		    <h4 class="muted">Cadastro de <span class="i">Volume</span></h4>
+			<br/>
+			<h:form>
+				<h:outputText value="Volume: " />
+				<h:inputText value="#{controleVolume.volume.volume}" /> <br />
+				<h:outputText value="Abreviatura: " />
+				<h:inputText value="#{controleVolume.volume.abreviatura}" /> <br />
+				<br />
+					
+				<span class="icon-ok"></span>
+				<h:commandButton action="#{controleVolume.salvar}" value="Salvar" 
+											styleClass="btn btn-link margin-10" />
+				/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="icon-remove"></span>
+				<h:commandButton action="#{controleVolume.cancelar}" value="Cancelar" 
+											styleClass="btn btn-link margin-10" />
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
