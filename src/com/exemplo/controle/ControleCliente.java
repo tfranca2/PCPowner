@@ -7,6 +7,7 @@ import javax.faces.bean.SessionScoped;
 
 import com.exemplo.entidade.Cliente;
 import com.exemplo.repositorio.RepositorioCliente;
+import com.exemplo.repositorio.RepositorioProduto;
 
 @ManagedBean
 @SessionScoped
@@ -14,6 +15,7 @@ public class ControleCliente {
 	private Cliente cliente;
 	private List<Cliente> clientes;
 	private RepositorioCliente repositorioCliente;
+	
 	
 	public ControleCliente(){
 		repositorioCliente = new RepositorioCliente();
