@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>Estrutura de Produto</h:head>
+<h:body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="conteudo">
+			<h4 class="muted">
+				Cadastro de <span class="i">Estrutura de Produtos</span>
+			</h4>
+			<br />
+			<h:form>
+
+				<!-- select produto pai -->
+				<h:outputText value="Produto Pai " />
+				<h:selectOneMenu id="produtoPai"
+					value="#{controleEstruturaProduto.idPai}">
+					<f:selectItems value="#{controleProduto.produtos}"
+						var="produto" 
+						itemLabel="#{produto.produto}"
+						itemValue="#{produto.id}" />
+
+				</h:selectOneMenu>
+
+				<!-- select produtos filhos -->
+				<h:panelGrid columns="3" cellpadding="5">
+					<h:outputLabel for="menu" value="Produtos Filhos" />
+					<p:selectCheckboxMenu id="menu"
+						value="#{controleEstruturaProduto.idFilhos}"
+						label="Produtos" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{controleEstruturaProduto.produtosFilho}"
+							var="filho" 
+							itemLabel="#{filho.produto}" 
+							itemValue="#{filho.id}" />
+					</p:selectCheckboxMenu>
+					<h:commandButton value="OK"  action="#{controleEstruturaProduto.salvar}" />
+				</h:panelGrid>
+			
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -13,20 +13,52 @@
 			<h:form>
 				<h:outputText value="Nome Fantasia: " />
 				<h:inputText value="#{controleFornecedor.fornecedor.nomeFantasia}" /> <br />
-				<h:outputText value="CPF / CNPJ: " />
-				<h:inputText value="#{controleFornecedor.fornecedor.cpfCnpj}" /> <br />
 				<h:outputText value="Razão Social: " />
 				<h:inputText value="#{controleFornecedor.fornecedor.razaoSocial}" /> <br />
+				<h:outputText value="CPF / CNPJ: " />
+				<h:inputText value="#{controleFornecedor.fornecedor.cpfCnpj}" /> <br />
 				<h:outputText value="Inscrição Estadual: " />
 				<h:inputText value="#{controleFornecedor.fornecedor.inscricaoEstadual}" /> <br />
 				<h:outputText value="Inscrição Municipal: " />
 				<h:inputText value="#{controleFornecedor.fornecedor.inscricaoMunicipal}" /> <br />
-				<h:outputText value="Endereços: " />
-				<h:inputText value="#{controleFornecedor.fornecedor.enderecos}" /> <br />
-				<h:outputText value="Contatos: " />
-				<h:inputText value="#{controleFornecedor.fornecedor.contatos}" /> <br />
+				<!-- 
+				<h:outputText value="Prazo de entrega (dias): " />
+				<h:selectBooleanCheckbox value="#{controleFornecedor.fornecedor.prazoEntrega}" /> <br />
+				-->
 				<h:outputText value="Ativo: " />
 				<h:selectBooleanCheckbox value="#{controleFornecedor.fornecedor.ativo}" /> <br />
+				
+				
+
+				<fieldset>
+    				<legend>Endere&ccedil;o</legend>
+					<h:outputText value="Endereço: " />
+					<h:inputText value="#{controleFornecedor.endereco.endereco}" /> <br />
+					<h:outputText value="CEP: " />
+					<h:inputText value="#{controleFornecedor.endereco.cep}" /> <br />
+					<h:outputText value="Cidade: " />
+					<h:selectOneMenu value="#{controleFornecedor.cidade}" >				
+						<f:selectItem itemLabel="Selecione..." itemValue="" noSelectionOption="true" />
+						<f:selectItems value="#{controleCidade.cidades}" 
+							var="cidade" itemValue="#{cidade.id}" itemLabel="#{cidade.cidade}" />
+					</h:selectOneMenu> <br />
+				</fieldset>
+				
+				<!-- 
+				-->
+				<fieldset>
+    				<legend>Contatos</legend>
+					<h:outputText value="Nome: " />
+					<h:inputText value="#{controleFornecedor.contato.nome}" /> <br />
+					<h:outputText value="Telefone: " />
+					<h:inputText value="#{controleFornecedor.contato.telefone}" /> <br />
+					<h:outputText value="E-mail: " />
+					<h:inputText value="#{controleFornecedor.contato.email}" /> <br />
+					<h:outputText value="Departamento: " />
+					<h:inputText value="#{controleFornecedor.contato.departamento}" /> <br />
+				</fieldset>
+
+				<br />
 				<br />
 					
 				<span class="icon-ok"></span>

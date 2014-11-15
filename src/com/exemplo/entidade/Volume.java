@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="volume")
-public class Volume { //pacote; caixa; garrafa; bobina; etc...
+public class Volume {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

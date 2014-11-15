@@ -1,14 +1,12 @@
 package com.exemplo.entidade;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,10 +27,10 @@ public class Fornecedor {
 	private String inscricaoEstadual;
 	@Column
 	private String inscricaoMunicipal;
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Endereco> enderecos;
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Contato> contatos;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Endereco endereco;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Contato contato;
 	@Column
 	private int prazoEntrega;
 	@Column
@@ -86,26 +84,16 @@ public class Fornecedor {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public List<Endereco> getEnderecos() {
-		return enderecos;
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
-	public List<Contato> getContatos() {
-		return contatos;
+	public Contato getContato() {
+		return contato;
 	}
-	public void setContatos(List<Contato> contatos) {
-		this.contatos = contatos;
-	}
-	
-	@Override
-	public String toString() {
-		return "Fornecedor [id=" + id + ", nomeFantasia=" + nomeFantasia
-				+ ", razaoSocial=" + razaoSocial + ", cpfCnpj=" + cpfCnpj
-				+ ", inscricaoEstadual=" + inscricaoEstadual
-				+ ", inscricaoMunicipal=" + inscricaoMunicipal
-				+ ", prazoEntrega=" + prazoEntrega + ", ativo=" + ativo
-				+ ", enderecos=" + enderecos + ", contatos=" + contatos + "]";
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 }

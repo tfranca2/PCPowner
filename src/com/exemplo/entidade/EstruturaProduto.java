@@ -1,10 +1,13 @@
 package com.exemplo.entidade;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,17 +16,13 @@ import javax.persistence.Table;
 public class EstruturaProduto {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idCliente")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="idEstruturaProduto")
 	private int id;
 	@OneToOne
 	private Produto produtoPai;
-	@OneToOne
-	private Produto produtoFilho;
-	@OneToOne
-	private Volume volumePai;
-	@OneToOne
-	private Volume volumeFilho;
+	@OneToMany
+	private List<Produto> produtosFilho;
 	@Column
 	private float conversor;
 	@Column
@@ -41,24 +40,7 @@ public class EstruturaProduto {
 	public void setProdutoPai(Produto produtoPai) {
 		this.produtoPai = produtoPai;
 	}
-	public Produto getProdutoFilho() {
-		return produtoFilho;
-	}
-	public void setProdutoFilho(Produto produtoFilho) {
-		this.produtoFilho = produtoFilho;
-	}
-	public Volume getVolumePai() {
-		return volumePai;
-	}
-	public void setVolumePai(Volume volumePai) {
-		this.volumePai = volumePai;
-	}
-	public Volume getVolumeFilho() {
-		return volumeFilho;
-	}
-	public void setVolumeFilho(Volume volumeFilho) {
-		this.volumeFilho = volumeFilho;
-	}
+	
 	public float getConversor() {
 		return conversor;
 	}
@@ -75,8 +57,13 @@ public class EstruturaProduto {
 	@Override
 	public String toString() {
 		return "EstruturaProduto [id=" + id + ", produtoPai=" + produtoPai
-				+ ", produtoFilho=" + produtoFilho + ", volumePai=" + volumePai
-				+ ", volumeFilho=" + volumeFilho + ", conversor=" + conversor
+				+ ", conversor=" + conversor
 				+ ", ativo=" + ativo + "]";
+	}
+	public List<Produto> getProdutosFilho() {
+		return produtosFilho;
+	}
+	public void setProdutosFilho(List<Produto> produtosFilho) {
+		this.produtosFilho = produtosFilho;
 	}
 }

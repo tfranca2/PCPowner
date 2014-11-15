@@ -1,20 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<head>
+<h:head>
  <title><ui:insert name="title">PCP owner</ui:insert></title>
       
-<link href="css/bootstrap.css" rel="stylesheet" />
-<link href="css/custom.css" rel="stylesheet" />
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="css/custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	PrimeFaces.locales['pt_BR'] = {  
+	        closeText: 'Fechar',  
+	        prevText: 'Anterior',  
+	        nextText: 'Próximo',  
+	        currentText: 'Começo',  
+	        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],  
+	        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],  
+	        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],  
+	        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],  
+	        dayNamesMin: ['D','S','T','Q','Q','S','S'],  
+	        weekHeader: 'Semana',  
+	        firstDay: 0,  
+	        isRTL: false,  
+	        showMonthAfterYear: false,  
+	        yearSuffix: '',  
+	        timeOnlyTitle: 'Só Horas',  
+	        timeText: 'Tempo',  
+	        hourText: 'Hora',  
+	        minuteText: 'Minuto',  
+	        secondText: 'Segundo',  
+	        currentText: 'Data Atual',  
+	        ampm: false,  
+	        month: 'Mês',  
+	        week: 'Semana',  
+	        day: 'Dia',  
+	        allDayText : 'Todo Dia'  
+	    };
+</script>
   
-</head>
+</h:head>
 <body>
     <div class="container">
     <h:form>
@@ -33,27 +67,28 @@
                                     <li> <h:commandLink action="#{controleVolume.novo}"> Volume </h:commandLink> </li>
                                     <li> <h:commandLink action="#{controleFornecedor.novo}"> Fornecedor </h:commandLink> </li>
                                     <li> <h:commandLink action="#{controleProduto.novo}"> Produto </h:commandLink> </li>
-                                    <li> <h:commandLink> Estrutura de Produto Acabado </h:commandLink> </li>
-                                    <li> <h:commandLink> Fase / Linha de ProduÃ§Ã£o </h:commandLink> </li>
+                                    <li> <h:commandLink action="#{controleEstruturaProduto.novo}">  Estrutura de Produto Acabado </h:commandLink> </li>
+                                    <li> <h:commandLink action="#{controleEtapaDeProducao.novo}"> Etapa de Produção </h:commandLink> </li>
                                     <li class="divider"></li>
-                                    <li> <h:commandLink> Ordem de ProduÃ§Ã£o </h:commandLink> </li>
+                                    <li> <h:commandLink action="#{controleOrdemDeProducao.novo}"> Ordem de Produção </h:commandLink> </li>
                                     <li> <h:commandLink action="#{controleLote.novo}"> Lote </h:commandLink> </li>
-                                    <li> <h:commandLink> Registro de ChÃ£o e FÃ¡brica </h:commandLink> </li>
+                                    <li> <h:commandLink action="#{controleChaoDeFabrica.novo}"> Registro de Chão e Fábrica </h:commandLink> </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">RelatÃ³rios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li> <a href="listarClientes.xhtml">Listar Clientes</a> </li>
                                     <li> <a href="listarCidades.xhtml">Listar Cidades</a> </li>
                                     <li> <a href="listarVolumes.xhtml">Listar Volumes</a> </li>
+                                    <li> <a href="listarEtapaDeProducao.xhtml">Listar Etapas de Produção</a> </li>
+                                    <li> <a href="listarLotes.xhtml">Listar Lotes</a> </li>
+                                    <li class="divider"></li>
                                     <li> <a href="listarFornecedores.xhtml">Listar Fornecedores</a> </li>
                                     <li> <a href="listarProdutos.xhtml">Listar Produtos</a> </li>
-                                    <li> <a href="listarLotes.xhtml">Listar Lotes</a> </li>
-                                    <li> <a href="">Listar Ordem e ProduÃ§Ã£o</a> </li>
-                                    <li class="divider"></li>
-                                    <li> <a href="">RelatÃ³rio de Estrutura de Produto Acabado</a> </li>
-                                    <li> <a href="">RelatÃ³rio de Estoque</a> </li>
+                                    <li> <a href="listarOrdemDeProducao.xhtml">Listar Ordem e Produção</a> </li>
+                                    <li> <a href="">Relatório de Estrutura de Produto Acabado</a> </li>
+                                    <!-- <li> <a href="">Relatório de Estoque</a> </li> -->
                                 </ul>
                             </li>
                         </ul>
@@ -71,7 +106,7 @@
         </div>
         <hr />
         <div class="footer floatright" >
-            <p>&copy; Copyright 2014</p>
+            <p>&copy; Copyright 2014 - 2015</p>
         </div>
 
     </div> 

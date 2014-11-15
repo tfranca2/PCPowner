@@ -9,38 +9,44 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
 		
-			<h4 class="muted">Listagem de <span class="i">Cidades</span></h4>
+			<h4 class="muted">Listagem de <span class="i">Ordens de Produção</span></h4>
 			<br/>
 			<h:form>
-				<h:dataTable value="#{controleCidade.cidades}" var="cidade" 
-									styleClass="table">
+				<h:dataTable value="#{controleOrdemDeProducao.ordensDeProducao}" 
+							 var="ordemDeProducao" styleClass="table" >
 					<h:column>
 						<f:facet name="header">Código</f:facet>
-						#{cidade.id}
+						#{ordemDeProducao.id}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Cidade</f:facet>
-						#{cidade.cidade}
+						<f:facet name="header">Data</f:facet>
+						<h:outputText value="#{ordemDeProducao.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</h:outputText>
 					</h:column>
 					<h:column>
-						<f:facet name="header">UF</f:facet>
-						#{cidade.uf}
+						<f:facet name="header">Etapa</f:facet>
+						#{ordemDeProducao.etapa.etapa}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Rais - Município</f:facet>
-						#{cidade.rais}
+						<f:facet name="header">Produto</f:facet>
+						#{ordemDeProducao.produto.produto}
 					</h:column>
 					<h:column>
-						<h:commandLink action="#{controleCidade.editar}">
+						<f:facet name="header">Quantidade</f:facet>
+						#{ordemDeProducao.quantidade}
+					</h:column> 
+					
+					
+					<h:column>
+						<h:commandLink action="#{controleOrdemDeProducao.editar(ordemDeProducao)}">
 							<span class="icon-pencil"></span>
 							Editar
-							<f:setPropertyActionListener value="#{cidade}" target="#{controleCidade.cidade}"/>
 						</h:commandLink>
 						/
-						<h:commandLink action="#{controleCidade.remover}">
+						<h:commandLink action="#{controleOrdemDeProducao.remover(ordemDeProducao)}">
 							<span class="icon-trash"></span>
 							Remover
-							<f:setPropertyActionListener value="#{cidade}" target="#{controleCidade.cidade}"/>
 						</h:commandLink>
 					</h:column>
 				</h:dataTable>

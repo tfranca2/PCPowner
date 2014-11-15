@@ -9,38 +9,38 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
 		
-			<h4 class="muted">Listagem de <span class="i">Cidades</span></h4>
+			<h4 class="muted">Listagem de <span class="i">EtapaDeProducao</span></h4>
 			<br/>
 			<h:form>
-				<h:dataTable value="#{controleCidade.cidades}" var="cidade" 
+				<h:dataTable value="#{controleEtapaDeProducao.etapasDeProducao}" var="etapaDeProducao" 
 									styleClass="table">
 					<h:column>
 						<f:facet name="header">Código</f:facet>
-						#{cidade.id}
+						#{etapaDeProducao.id}
 					</h:column>
 					<h:column>
-						<f:facet name="header">Cidade</f:facet>
-						#{cidade.cidade}
+						<f:facet name="header">Etapa</f:facet>
+						#{etapaDeProducao.etapa}
 					</h:column>
 					<h:column>
-						<f:facet name="header">UF</f:facet>
-						#{cidade.uf}
+						<f:facet name="header">Duração</f:facet>
+						#{etapaDeProducao.duracao} Hr.
 					</h:column>
 					<h:column>
-						<f:facet name="header">Rais - Município</f:facet>
-						#{cidade.rais}
+						<f:facet name="header">Ativo</f:facet>
+						<span class="#{etapaDeProducao.ativo?'icon-ok':'icon-cancel'}"></span>
 					</h:column>
+					
+					
 					<h:column>
-						<h:commandLink action="#{controleCidade.editar}">
+						<h:commandLink action="#{controleEtapaDeProducao.editar(etapaDeProducao)}">
 							<span class="icon-pencil"></span>
 							Editar
-							<f:setPropertyActionListener value="#{cidade}" target="#{controleCidade.cidade}"/>
 						</h:commandLink>
 						/
-						<h:commandLink action="#{controleCidade.remover}">
+						<h:commandLink action="#{controleEtapaDeProducao.remover(etapaDeProducao)}">
 							<span class="icon-trash"></span>
 							Remover
-							<f:setPropertyActionListener value="#{cidade}" target="#{controleCidade.cidade}"/>
 						</h:commandLink>
 					</h:column>
 				</h:dataTable>

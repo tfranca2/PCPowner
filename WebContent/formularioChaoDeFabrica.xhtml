@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="template.xhtml">
+		<ui:define name="conteudo">
+		    <h4 class="muted">Registro de <span class="i">Ch&atilde;o de F&aacute;brica</span></h4>
+			<br/>
+			<h:form>
+				
+				<h:outputText value="Data: " />
+				<p:calendar id="data" timeZone="GMT-3" pattern="dd/MM/yyyy" locale="pt_BR" />
+				
+				<h:outputText value="Etapa de produção: "/>
+				<h:selectOneMenu id="etapa"  >				
+					<f:selectItem itemLabel="Selecione..." itemValue="" noSelectionOption="true" />
+					<f:selectItems value="#{controleEtapaDeProducao.etapas}" 
+						var="etapa" itemValue="#{etapa.id}" itemLabel="#{etapa.etapa}" />
+						
+					<p:ajax listener="#{controleLote.atualizaValidade}" 
+							event="change" update="validade" process="produto" />
+				</h:selectOneMenu> 
+				
+				<h:commandButton value="Atualizar" styleClass="btn btn-link margin-10" />
+				
+				<br />
+				
+				<span class="icon-ok"></span>
+				<h:commandButton action="#{controleChaoDeFabrica.salvar}" value="Salvar" 
+											styleClass="btn btn-link margin-10" />
+				/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="icon-remove"></span>
+				<h:commandButton action="#{controleChaoDeFabrica.cancelar}" value="Cancelar" 
+											styleClass="btn btn-link margin-10" />
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

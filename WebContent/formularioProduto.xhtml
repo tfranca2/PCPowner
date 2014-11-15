@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,19 +14,25 @@
 			<h:form>
 				<h:outputText value="Produto: " />
 				<h:inputText value="#{controleProduto.produto.produto}" /> <br />
+				
 				<h:outputText value="Volume: " />
-				<h:selectOneMenu value="#{controleProduto.produto.volume}" >
+				<h:selectOneMenu value="#{controleProduto.volumeId}" >
+					<f:selectItem itemLabel="Selecione..." itemValue="" noSelectionOption="true"/>
 					<f:selectItems value="#{controleVolume.volumes}" 
-						var="volume" itemValue="#{volume.volume}" itemLabel="#{volume.volume}" />
-				</h:selectOneMenu> <br />
-				<h:outputText value="CÃ³digo de Barras: " />
+						var="volume" itemValue="#{volume.id}" itemLabel="#{volume.volume}" /> 
+				</h:selectOneMenu> <br /> 
+				
+				<h:outputText value="Código de Barras: " />
 				<h:inputText value="#{controleProduto.produto.codigoDeBarras}" /> <br />
+				
 				<h:outputText value="Tipo: " />
 				<h:selectOneMenu value="#{controleProduto.produto.tipo}" >
-					<f:selectItems value="#{Tipo}" 
+					<f:selectItem itemLabel="Selecione..." itemValue="" noSelectionOption="true" />
+					<f:selectItems value="#{controleTipo.todosTipos}" 
 						var="tipo" itemValue="#{tipo}" itemLabel="#{tipo}" />
 				</h:selectOneMenu> <br />
-				<h:outputText value="Peso LÃ­quido: " />
+				
+				<h:outputText value="Peso Líquido: " />
 				<h:inputText value="#{controleProduto.produto.pesoLiquido}" /> <br />
 				<h:outputText value="Peso Bruto: " />
 				<h:inputText value="#{controleProduto.produto.pesoBruto}" /> <br />
@@ -35,12 +42,15 @@
 				<h:inputText value="#{controleProduto.produto.fatorPallet}" /> <br />
 				<h:outputText value="Controle de Qualidade: " />
 				<h:selectBooleanCheckbox value="#{controleProduto.produto.controleDeQualidade}" /> <br />
-				<h:outputText value="Fornecedores: " />
-				<h:selectManyListbox value="#{controleProduto.produto.fornecedores}" >
+				
+				<h:outputText value="Fornecedor: " />
+				<h:selectOneMenu value="#{controleProduto.fornecedorId}" >
+					<f:selectItem itemLabel="Selecione..." itemValue="" noSelectionOption="true" />
 					<f:selectItems value="#{controleFornecedor.fornecedores}" 
-						var="fornecedor" itemValue="#{fornecedor.nomeFantasia}" itemLabel="#{fornecedor.nomeFantasia} - #{fornecedor.cpfCnpj}" />
-				</h:selectManyListbox> <br />
-				<h:outputText value="Estoque MÃ­nimo: " />
+						var="fornecedor" itemValue="#{fornecedor.id}" itemLabel="#{fornecedor.nomeFantasia}" />
+				</h:selectOneMenu> <br />
+				
+				<h:outputText value="Estoque Mínimo: " />
 				<h:inputText value="#{controleProduto.produto.estoqueMinimo}" /> <br />
 				<h:outputText value="Validade: " />
 				<h:inputText value="#{controleProduto.produto.validade}" /> <br />

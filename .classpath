@@ -16,17 +16,24 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="#system#;jst.jsf"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="#system#;jst.jsf"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 			<attribute name="owner.project.facets" value="jst.jsf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/N-36/workspace/PCPowner/WebContent/WEB-INF/lib/primefaces-5.0.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="lote")
@@ -22,9 +24,11 @@ public class Lote {
 	private String descricao;
 	@Column
 	private boolean ativo;
-	@Column
+	@Column(name="fabricacao", nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date fabricacao;
-	@Column
+	@Column(name="validade", nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date validade;
 	@OneToOne
 	private Produto produto;

@@ -35,12 +35,16 @@ public class ControleVolume {
 	}
 	
 	public String remover(Volume volume){
-		repositorioVolume.remover(volume);;
+		repositorioVolume.remover(volume);
 		return null;
 	}
 	
 	public String cancelar(){
 		return "listarVolumes";
+	}
+	
+	public Volume obterPorId(int id){
+		return repositorioVolume.ObterPorId(id);
 	}
 
 	public Volume getVolume() {

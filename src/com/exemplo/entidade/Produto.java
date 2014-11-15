@@ -1,7 +1,5 @@
 package com.exemplo.entidade;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +7,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,7 +24,7 @@ public class Produto {
 	private Volume volume;
 	@Column
 	private String codigoDeBarras;
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	@Column
 	private float pesoLiquido;
@@ -39,8 +36,8 @@ public class Produto {
 	private int fatorPallet;
 	@Column
 	private boolean controleDeQualidade;
-	@ManyToMany
-	private List<Fornecedor> fornecedores;
+	@OneToOne
+	private Fornecedor fornecedor;
 	@Column
 	private int estoqueMinimo;
 	@Column
@@ -108,12 +105,7 @@ public class Produto {
 	public void setControleDeQualidade(boolean controleDeQualidade) {
 		this.controleDeQualidade = controleDeQualidade;
 	}
-	public List<Fornecedor> getFornecedores() {
-		return fornecedores;
-	}
-	public void setFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
-	}
+	
 	public int getEstoqueMinimo() {
 		return estoqueMinimo;
 	}
@@ -132,17 +124,11 @@ public class Produto {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	@Override
-	public String toString() {
-		return "Produto [id=" + id + ", produto=" + produto + ", volume="
-				+ volume + ", codigoDeBarras=" + codigoDeBarras + ", tipo="
-				+ tipo + ", pesoLiquido=" + pesoLiquido + ", pesoBruto="
-				+ pesoBruto + ", fatorCaixa=" + fatorCaixa + ", fatorPallet="
-				+ fatorPallet + ", controleDeQualidade=" + controleDeQualidade
-				+ ", fornecedores=" + fornecedores + ", estoqueMinimo="
-				+ estoqueMinimo + ", validade=" + validade + ", ativo=" + ativo
-				+ "]";
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 }
 

@@ -26,17 +26,17 @@ public class ControleCidade {
 	
 	public String salvar(){
 		repositorioCidade.salvar(cidade);
+		
 		return "listarCidades";
 	}
 
-	public String editar(Cidade cidade){
-		this.cidade = cidade;
+	public String editar(){
 		return "formularioCidade";
 	}
 	
-	public String remover(Cidade cidade){
+	public String remover(){
 		repositorioCidade.remover(cidade);
-		return null;
+		return "listarCidades";
 	}
 	
 	public String cancelar(){
