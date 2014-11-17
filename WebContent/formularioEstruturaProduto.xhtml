@@ -19,28 +19,26 @@
 				<!-- select produto pai -->
 				<h:outputText value="Produto Pai " />
 				<p:selectOneMenu id="produtoPai"
-					value="#{controleEstruturaProduto.produtoPai}">
-					<f:selectItems value="#{controleEstruturaProduto.produtosPai}"
+					value="#{controleEstruturaProduto.idPai}">
+					<f:selectItems value="#{controleProduto.produtos}"
 						var="produto" 
 						itemLabel="#{produto.produto}"
 						itemValue="#{produto.id}" />
-						<p:ajax event="keyup" update="uc"/>
 
 				</p:selectOneMenu>
 
-				<p:inputText id="uc" disabled="true" value="#{controleEstruturaProduto.estruturaProduto.volumePai}"/>
 				<!-- select produtos filhos -->
 				<h:panelGrid columns="3" cellpadding="5">
 					<h:outputLabel for="menu" value="Produtos Filhos" />
 					<p:selectCheckboxMenu id="menu"
-						value="#{controleEstruturaProduto.produtosFilhosSelecionados}"
+						value="#{controleEstruturaProduto.idFilhos}"
 						label="Produtos" filter="true" filterMatchMode="startsWith">
-						<f:selectItems value="#{controleEstruturaProduto.produtosFilho}"
+						<f:selectItems value="#{controleProduto.produtos}"
 							var="filho" 
 							itemLabel="#{filho.produto}" 
 							itemValue="#{filho.id}" />
 					</p:selectCheckboxMenu>
-					<h:commandButton value="OK" type="sumit"  action="#{controleEstruturaProduto.salvar}" />
+					<h:commandButton value="OK"   action="#{controleEstruturaProduto.salvar}" />
 				</h:panelGrid>
 			
 

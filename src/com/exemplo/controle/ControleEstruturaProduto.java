@@ -1,5 +1,6 @@
 package com.exemplo.controle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -14,8 +15,9 @@ import com.exemplo.repositorio.RepositorioProduto;
 @SessionScoped
 public class ControleEstruturaProduto {
 	private EstruturaProduto estruturaProduto;
+	private int idPai;
+	private List<Integer> idFilhos;
 	private Produto produtoPai;
-	private List<Produto> produtosPai;
 	private List<Produto> produtosFilho;
 	private List<Produto> produtosFilhosSelecionados;
 	private RepositorioEstruturaProduto repositorioEstruturaProduto;
@@ -27,46 +29,61 @@ public class ControleEstruturaProduto {
 		repositorioProduto = new RepositorioProduto();
 		estruturaProduto = new EstruturaProduto();
 	}
-	
-	public String novo(){
+
+	public String novo() {
 		estruturaProduto = new EstruturaProduto();
 		return "listarEstruturaProduto";
 	}
 	
-	public String salvar(){
+	public List<Produto> recuperarObjetosBanco(){
+		List<Produto> produtos = new ArrayList<Produto>();
+		for (Integer integer : idFilhos) {
+			produtos.add(repositorioProduto.ObterPorId(integer));
+			
+		}
 		
-		estruturaProduto.setProdutoPai(produtoPai);
-		repositorioEstruturaProduto.salvar(estruturaProduto);
-		return "listarEstruturaProduto";
+		return produtos;
 	}
 
-	public String editar(){
+	public String salvar() {
+
+		produtoPai = repositorioProduto.ObterPorId(idPai);
+		estruturaProduto.setProdutoPai(produtoPai);
+		estruturaProduto.setProdutosFilho(recuperarObjetosBanco());
+		repositorioEstruturaProduto.salvar(estruturaProduto);
+
+		return null;
+	}
+
+	public String editar() {
 		return "formularioCliente";
 	}
-	
-	public String remover(){
+
+	public String remover() {
 		repositorioEstruturaProduto.remover(estruturaProduto);
 		return "ListarEstruturaProduto";
 	}
-	
-	public String cancelar(){
+
+	public String cancelar() {
 		return "formularioEstruturaProduto";
 	}
-	
-	
-	
-	
-	
-	//-------------------------------------------------------------------------------------------------------------//
 
-	
-	
+	// -------------------------------------------------------------------------------------------------------------//
+
 	public EstruturaProduto getEstruturaProduto() {
 		return estruturaProduto;
 	}
 
 	public void setEstruturaProduto(EstruturaProduto estruturaProduto) {
 		this.estruturaProduto = estruturaProduto;
+	}
+
+	public int getIdPai() {
+		return idPai;
+	}
+
+	public void setIdPai(int idPai) {
+		this.idPai = idPai;
 	}
 
 	public Produto getProdutoPai() {
@@ -77,17 +94,7 @@ public class ControleEstruturaProduto {
 		this.produtoPai = produtoPai;
 	}
 
-	public List<Produto> getProdutosPai() {
-		produtosPai = repositorioProduto.listarTodos();
-		return produtosPai;
-	}
-
-	public void setProdutosPai(List<Produto> produtosPai) {
-		this.produtosPai = produtosPai;
-	}
-
 	public List<Produto> getProdutosFilho() {
-		produtosFilho = repositorioProduto.listarTodos();
 		return produtosFilho;
 	}
 
@@ -122,11 +129,22 @@ public class ControleEstruturaProduto {
 	}
 
 	public List<EstruturaProduto> getAllEstruturaProduto() {
-		allEstruturaProduto = repositorioEstruturaProduto.listarTodos();
 		return allEstruturaProduto;
 	}
 
-	public void setAllEstruturaProduto(List<EstruturaProduto> allEstruturaProduto) {
+	public void setAllEstruturaProduto(
+			List<EstruturaProduto> allEstruturaProduto) {
 		this.allEstruturaProduto = allEstruturaProduto;
 	}
+
+	public List<Integer> getIdFilhos() {
+		return idFilhos;
+	}
+
+	public void setIdFilhos(List<Integer> idFilhos) {
+		this.idFilhos = idFilhos;
+	}
+
+
+
 }

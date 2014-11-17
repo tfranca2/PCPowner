@@ -7,7 +7,6 @@ import javax.faces.bean.SessionScoped;
 
 import com.exemplo.entidade.Cliente;
 import com.exemplo.repositorio.RepositorioCliente;
-import com.exemplo.repositorio.RepositorioProduto;
 
 @ManagedBean
 @SessionScoped

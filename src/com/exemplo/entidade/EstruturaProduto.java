@@ -1,16 +1,15 @@
 package com.exemplo.entidade;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="estruturaProduto")
@@ -20,10 +19,10 @@ public class EstruturaProduto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idEstruturaProduto")
 	private int id;
-	@ManyToMany(cascade =  CascadeType.ALL)
+	@OneToOne
 	private Produto produtoPai;
-	@ManyToMany(cascade =  CascadeType.ALL)
-	private Produto produtoFilho;
+	@OneToMany
+	private List<Produto> produtosFilho;
 	@Column
 	private float conversor;
 	@Column
@@ -41,12 +40,7 @@ public class EstruturaProduto {
 	public void setProdutoPai(Produto produtoPai) {
 		this.produtoPai = produtoPai;
 	}
-	public Produto getProdutoFilho() {
-		return produtoFilho;
-	}
-	public void setProdutoFilho(Produto produtoFilho) {
-		this.produtoFilho = produtoFilho;
-	}
+
 	
 	public float getConversor() {
 		return conversor;
@@ -60,12 +54,13 @@ public class EstruturaProduto {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	@Override
-	public String toString() {
-		return "EstruturaProduto [id=" + id + ", produtoPai=" + produtoPai
-				+ ", produtoFilho=" + produtoFilho 
-				+ ", conversor=" + conversor
-				+ ", ativo=" + ativo + "]";
+	public List<Produto> getProdutosFilho() {
+		return produtosFilho;
 	}
+	public void setProdutosFilho(List<Produto> produtosFilho) {
+		this.produtosFilho = produtosFilho;
+	}
+	
+
+
 }
