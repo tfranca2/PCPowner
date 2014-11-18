@@ -1,14 +1,11 @@
 package com.exemplo.entidade;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,14 +16,13 @@ public class EstruturaProduto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idEstruturaProduto")
 	private int id;
-	@OneToOne
+	@ManyToOne
 	private Produto produtoPai;
-	@OneToMany
-	private List<Produto> produtosFilho;
+	@ManyToOne
+	private Produto produtoFilho;
 	@Column
 	private float conversor;
-	@Column
-	private boolean ativo;
+	
 	
 	public int getId() {
 		return id;
@@ -48,19 +44,13 @@ public class EstruturaProduto {
 	public void setConversor(float conversor) {
 		this.conversor = conversor;
 	}
-	public boolean isAtivo() {
-		return ativo;
+
+	public Produto getProdutoFilho() {
+		return produtoFilho;
 	}
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-	public List<Produto> getProdutosFilho() {
-		return produtosFilho;
-	}
-	public void setProdutosFilho(List<Produto> produtosFilho) {
-		this.produtosFilho = produtosFilho;
+	public void setProdutoFilho(Produto produtoFilho) {
+		this.produtoFilho = produtoFilho;
 	}
 	
-
 
 }

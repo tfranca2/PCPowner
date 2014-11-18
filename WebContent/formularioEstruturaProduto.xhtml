@@ -15,32 +15,37 @@
 			</h4>
 			<br />
 			<h:form>
-
+			<h:panelGrid columns="1" cellpadding="5" >
 				<!-- select produto pai -->
-				<h:outputText value="Produto Pai " />
-				<p:selectOneMenu id="produtoPai"
-					value="#{controleEstruturaProduto.idPai}">
+				<h:outputText value="Produto Pai " 	/>
+				<p:selectOneMenu 
+					value="#{controleEstruturaProduto.idPai}" 
+					required="true" requiredMessage="Obrigatorio">
+					<f:selectItem itemLabel="Selecione"/>
 					<f:selectItems value="#{controleProduto.produtos}"
 						var="produto" 
 						itemLabel="#{produto.produto}"
-						itemValue="#{produto.id}" />
+						itemValue="#{produto.id}"
+						 />
 
 				</p:selectOneMenu>
 
 				<!-- select produtos filhos -->
-				<h:panelGrid columns="3" cellpadding="5">
-					<h:outputLabel for="menu" value="Produtos Filhos" />
-					<p:selectCheckboxMenu id="menu"
-						value="#{controleEstruturaProduto.idFilhos}"
-						label="Produtos" filter="true" filterMatchMode="startsWith">
-						<f:selectItems value="#{controleProduto.produtos}"
-							var="filho" 
-							itemLabel="#{filho.produto}" 
-							itemValue="#{filho.id}" />
-					</p:selectCheckboxMenu>
-					<h:commandButton value="OK"   action="#{controleEstruturaProduto.salvar}" />
-				</h:panelGrid>
+				<h:outputText value="Produto Filho " 	/>
+					<p:selectOneMenu value="#{controleEstruturaProduto.idFilho}">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+						<f:selectItems value="#{controleProduto.produtos}" var="produto"
+							itemLabel="#{produto.produto}" itemValue="#{produto.id}" />
+
+					</p:selectOneMenu>
+					<h:outputText value="Conversor: "/>
+				<h:inputText value="#{controleEstruturaProduto.estruturaProduto.conversor}" required="true" requiredMessage="Obrigatorio"/>
+				<h:panelGroup >
+				<p:commandButton styleClass="btn btn-success" value="Salvar" action="#{controleEstruturaProduto.salvar}"/>
+				<p:commandButton styleClass="btn btn-primary" value="Exibir Todos" action="listarEstruturaProdutos"/>
+				</h:panelGroup>
 			
+			</h:panelGrid>
 
 			</h:form>
 		</ui:define>
