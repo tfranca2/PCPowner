@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="conteudo">
+			<h4 class="muted">
+				Listagem de <span class="i">Estrutura de Produtos</span>
+			</h4>
+			<br />
+			<h:form>
+				<p:dataTable value="#{controleEstruturaProduto.allEstruturaProduto}"
+					var="estrutura" >
+					<p:column filterBy="#{estrutura.produtoPai.produto}"  >
+						<f:facet name="header">Produto Pai</f:facet>
+						<h:outputText value="#{estrutura.produtoPai.produto}" />
+					</p:column>
+					<p:column width="50" style="text-align:center">
+						<f:facet name="header">Volume</f:facet>
+						<h:outputText value="#{estrutura.produtoPai.volume.abreviatura}" />
+					</p:column>
+					<p:column filterBy="#{estrutura.produtoFilho.produto}">
+						<f:facet name="header">Produto Filho</f:facet>
+						<h:outputText value="#{estrutura.produtoFilho.produto}" />
+					</p:column>
+					<p:column width="50" style="text-align:center">
+						<f:facet name="header">Volume</f:facet>
+						<h:outputText value="#{estrutura.produtoFilho.volume.abreviatura}" />
+					</p:column>
+					<p:column style="text-align:center" >
+						<f:facet name="header">Conversor</f:facet>
+						<h:outputText value="#{estrutura.conversor}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Operação</f:facet>
+						<h:commandLink action="#{controleEstruturaProduto.editar}">
+							<f:setPropertyActionListener value="#{estrutura}" target="#{controleEstruturaProduto.estruturaProduto}"></f:setPropertyActionListener>
+							<span class="icon-pencil"></span>
+							Editar
+						</h:commandLink>
+						/
+						<h:commandLink action="#{controleEstruturaProduto.remover}">
+						<f:setPropertyActionListener value="#{estrutura}" target="#{controleEstruturaProduto.estruturaProduto}"></f:setPropertyActionListener>
+							<span class="icon-trash"></span>
+							Remover
+						</h:commandLink>
+					</p:column>
+
+
+
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

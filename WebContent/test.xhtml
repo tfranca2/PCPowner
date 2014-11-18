@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:form>
+	<h:outputText value="Produto Pai " />
+	<p:selectOneMenu value="#{controleEstruturaProduto.produtoPai}">
+		
+	</p:selectOneMenu>
+	
+	
+	<h:panelGrid columns="3" cellpadding="5">
+		<h:outputLabel for="menu" value="Location:" />
+		<p:selectCheckboxMenu id="menu"
+			value="#{controleEstruturaProduto.produtosFilhosSelecionados}"
+			label="Cities" filter="true" filterMatchMode="startsWith">
+			<f:selectItems value="#{controleEstruturaProduto.produtosFilho}"
+				var="filhos" itemLabel="#{filhos.produto}" itemValue="#{filhos.id}" />
+		</p:selectCheckboxMenu>
+		<p:commandLink value="Submit" update="display" />
+	</h:panelGrid>
+
+	<p:outputPanel id="display"
+		style="width:250px;padding-left:5px;margin-top:10px">
+		<p:dataList
+			value="#{controleEstruturaProduto.produtosFilhosSelecionados}"
+			var="city" emptyMessage="No cities selected">
+            #{city}
+        </p:dataList>
+	</p:outputPanel>
+</h:form>
+
+</html>
