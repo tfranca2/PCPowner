@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+	<ui:composition template="template.xhtml">
+		<ui:define name="conteudo">
+			<h4 class="muted">
+				Cadastro de <span class="i">Estrutura de Produtos</span>
+			</h4>
+			<br />
+			<h:form>
+				<h:panelGrid columns="2" >
+					<h:outputText value="Ordem de Compra Nº" />
+					<h:inputText
+						value="#{controleOrdemDeCompra.ordemDeCompra.numeroDaOrdem}" />
+						
+					<h:outputText value="Requisitante" />
+					<h:inputText
+						value="#{controleOrdemDeCompra.ordemDeCompra.requisitante}" />
+						
+					<h:outputText value="Fornecedor" />
+					<p:selectOneMenu value="#{controleOrdemDeCompra.idFornecedor}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{controleFornecedor.fornecedores}"
+							var="fornecedor" itemLabel="#{fornecedor.razaoSocial}"
+							itemValue="#{fornecedor.id}" />
+					</p:selectOneMenu>
+					
+					<h:outputText value="Produto" />
+					<p:selectOneMenu value="#{controleOrdemDeCompra.idProduto}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{controleProduto.produtos}" var="produto"
+							itemLabel="#{produto.produto}" itemValue="#{produto.id}" />
+					</p:selectOneMenu>
+					
+					<h:outputText value="Valor Unt." />
+					<h:inputText
+						value="#{controleOrdemDeCompra.ordemDeCompra.valorUnitario}" />
+						
+					<h:outputText value="Quantidade" />
+					<h:inputText
+						value="#{controleOrdemDeCompra.ordemDeCompra.quantidade}" />
+					<h:outputText value="Data de Emição"/>
+					<p:calendar value="#{controleOrdemDeCompra.ordemDeCompra.dataEmicao}"
+					timeZone="GMT-3" pattern="dd/MM/yyyy" locale="pt_BR"/>
+					
+					<h:outputText value="Data de Entrega"/>
+					<p:calendar value="#{controleOrdemDeCompra.ordemDeCompra.dataEntrega}"
+					timeZone="GMT-3" pattern="dd/MM/yyyy" locale="pt_BR"/>
+						
+					<h:outputText value="Tipo de Frete" />
+					<p:selectOneMenu
+						value="#{controleOrdemDeCompra.ordemDeCompra.tipoFrete}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{controleOrdemDeCompra.tiposFrete}"
+							var="frete" itemLabel="#{frete}" itemValue="#{frete}" />
+							<p:ajax event="change" process="@this" update="panelCampo1 panelCampo2" />  
+					</p:selectOneMenu>
+					
+					<p:outputPanel id="panelCampo1">
+						<h:outputText value="Valor Frete" rendered="#{controleOrdemDeCompra.ordemDeCompra.tipoFrete == 'FOB'}"/>
+					</p:outputPanel>
+					<p:outputPanel id="panelCampo2">
+						<h:inputText value="#{controleOrdemDeCompra.ordemDeCompra.valorFrete}" rendered="#{controleOrdemDeCompra.ordemDeCompra.tipoFrete == 'FOB'}"/>
+					</p:outputPanel >
+					
+					<h:outputText value="Tipo de Pagamento" />
+					<p:selectOneMenu
+						value="#{controleOrdemDeCompra.ordemDeCompra.tipoPagamento}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{controleOrdemDeCompra.tiposPagamento}"
+							var="pagamento" itemLabel="#{pagamento}" itemValue="#{pagamento}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+				<p:panelGrid>
+					<h:commandButton value="Salvar" action="#{controleOrdemDeCompra.salvar}" />
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
