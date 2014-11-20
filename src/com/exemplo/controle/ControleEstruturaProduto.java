@@ -27,26 +27,26 @@ public class ControleEstruturaProduto {
 		repositorioProduto = new RepositorioProduto();
 		estruturaProduto = new EstruturaProduto();
 	}
-	
-	
-	public String salvar(){
+
+	public String salvar() {
 		estruturaProduto.setProdutoPai(repositorioProduto.ObterPorId(idPai));
-		estruturaProduto.setProdutoFilho(repositorioProduto.ObterPorId(idFilho));
+		estruturaProduto
+				.setProdutoFilho(repositorioProduto.ObterPorId(idFilho));
 		repositorioEstruturaProduto.salvar(estruturaProduto);
 		return "listarEstruturaProdutos";
 	}
-	
-	public String novo(){
+
+	public String novo() {
 		estruturaProduto = new EstruturaProduto();
 		return "formularioEstruturaProduto";
 	}
-	
-	public String remover(){
+
+	public String remover() {
 		repositorioEstruturaProduto.remover(estruturaProduto);
 		return "listarEstruturaProdutos";
 	}
-	
-	public String editar(){
+
+	public String editar() {
 		return "formularioEstruturaProduto";
 	}
 
@@ -73,7 +73,6 @@ public class ControleEstruturaProduto {
 	public void setIdFilho(int idFilho) {
 		this.idFilho = idFilho;
 	}
-
 
 	public List<Produto> getProdutosPai() {
 		return produtosPai;
