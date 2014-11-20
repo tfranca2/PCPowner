@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.exemplo.entidade.EstruturaProduto;
+import com.exemplo.entidade.Produto;
 
 public class RepositorioEstruturaProduto {
 	
@@ -49,6 +50,37 @@ public class RepositorioEstruturaProduto {
 		em.getTransaction().commit();
 		emf.close();
 		return estruturaProduto;
+	}
+	
+	/*
+	 * este meto retorna todos os produtos pai da classe Estrutura de Produto no qual seu id esta
+	 * sendo passado.
+	 * */
+	
+	@SuppressWarnings("unchecked")
+	public List<EstruturaProduto> findByProdutoPai(int id){
+		em.getTransaction().begin();
+		Query consuta = em.createQuery("select ep from EstruturaProduto ep where ep.produtoPai.id = :id ");
+		consuta.setParameter("id", id );
+		List<EstruturaProduto> filterProdutoPai = consuta.getResultList();
+		em.getTransaction().commit();
+		emf.close();
+		return filterProdutoPai;
+	}
+	
+	/*
+	 * este meto retorna todos os produtos Filho da classe Estrutura de Produto no qual seu id esta
+	 * sendo passado.
+	 * */
+	@SuppressWarnings("unchecked")
+	public List<EstruturaProduto> findByProdutoFilho(int id){
+		em.getTransaction().begin();
+		Query consuta = em.createQuery("select ep from EstruturaProduto ep where ep.produtoFilho.id = :id ");
+		consuta.setParameter("id", id );
+		List<EstruturaProduto> filterProdutoFilho = consuta.getResultList();
+		em.getTransaction().commit();
+		emf.close();
+		return filterProdutoFilho;
 	}
 	
 }

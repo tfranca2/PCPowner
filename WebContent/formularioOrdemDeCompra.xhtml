@@ -11,7 +11,7 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
 			<h4 class="muted">
-				Cadastro de <span class="i">Estrutura de Produtos</span>
+				Cadastro de <span class="i">Ordem de Compra</span>
 			</h4>
 			<br />
 			<h:form>
@@ -79,7 +79,7 @@
 					</p:selectOneMenu>
 				</h:panelGrid>
 				<p:panelGrid>
-					<h:commandButton value="Salvar" action="#{controleOrdemDeCompra.salvar}" />
+					<p:commandButton styleClass="btn-success" value="Salvar" action="#{controleOrdemDeCompra.salvar}" />
 				</p:panelGrid>
 			</h:form>
 		</ui:define>
