@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition template="template.xhtml">
 		<ui:define name="conteudo">
@@ -21,10 +22,10 @@
 				<h:outputText value="Código de Barras: " />
 				<h:inputText value="#{controleProduto.produto.codigoDeBarras}" /> <br />
 				<h:outputText value="Tipo: " />
-				<h:selectOneMenu value="#{controleProduto.produto.tipo}" >
+				<p:selectOneMenu value="#{controleProduto.produto.tipo}" >
 					<f:selectItems value="#{Tipo}" 
 						var="tipo" itemValue="#{tipo}" itemLabel="#{tipo}" />
-				</h:selectOneMenu> <br />
+				</p:selectOneMenu> <br />
 				<h:outputText value="Peso Líquido: " />
 				<h:inputText value="#{controleProduto.produto.pesoLiquido}" /> <br />
 				<h:outputText value="Peso Bruto: " />
