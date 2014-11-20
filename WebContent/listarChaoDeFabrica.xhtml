@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="conteudo">
+
+		<h4 class="muted">
+			Registro de <span class="i">Ch&atilde;o de F&aacute;brica</span>
+		</h4>
+		<br />
+		<h:form id="chao">
+			<h:outputText value="Data: " />
+			<p:calendar id="data" timeZone="GMT-3" pattern="dd/MM/yyyy"
+				locale="pt_BR" value="#{controleChaoDeFabrica.data}" />
+				&nbsp;&nbsp;
+				<h:outputText value="Etapa de produção: " />
+			<h:selectOneMenu id="etapa" value="#{controleChaoDeFabrica.etapa}">
+				<f:selectItem itemLabel="Selecione..." itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{controleEtapaDeProducao.etapasDeProducao}"
+					var="etapa" itemValue="#{etapa.id}" itemLabel="#{etapa.etapa}" />
+			</h:selectOneMenu> 
+				&nbsp;&nbsp;
+				<h:commandButton value="Atualizar" action="#{controleChaoDeFabrica.filtrar}" styleClass="btn" />
+
+			<hr />
+
+			<h:dataTable value="#{controleChaoDeFabrica.chaosDeFabrica}" var="chao" styleClass="table">
+
+				<h:column>
+					<f:facet name="header">Ordem</f:facet>
+							#{chao.ordem.id}
+				</h:column>
+					
+				<h:column>
+					<f:facet name="header">Produto</f:facet>
+							#{chao.produto.produto}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Cons. Nominal</f:facet>
+							#{chao.consumoNominal} 
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Unid.</f:facet>
+							#{chao.produto.volume.abreviatura}
+				</h:column>
+
+				<h:column>
+					<h:commandLink action="#{controleChaoDeFabrica.editar(chao)}">
+							<span class="icon-pencil"></span>
+							Inserir Apontamento
+						</h:commandLink>
+				</h:column>
+
+			</h:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>

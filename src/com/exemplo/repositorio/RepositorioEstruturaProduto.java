@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.exemplo.entidade.EstruturaProduto;
+import com.exemplo.entidade.Produto;
 
 public class RepositorioEstruturaProduto {
 	
@@ -49,6 +50,11 @@ public class RepositorioEstruturaProduto {
 		em.getTransaction().commit();
 		emf.close();
 		return estruturaProduto;
+	}
+	
+	public List<Produto> produtosFilho(){
+		
+		return null;
 	}
 	
 }

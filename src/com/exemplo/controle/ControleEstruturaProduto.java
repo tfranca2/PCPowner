@@ -1,6 +1,5 @@
 package com.exemplo.controle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -16,11 +15,9 @@ import com.exemplo.repositorio.RepositorioProduto;
 public class ControleEstruturaProduto {
 	private EstruturaProduto estruturaProduto;
 	private int idPai;
-	private List<Integer> idFilhos;
-	private Produto produtoPai;
+	private int idFilho;
 	private List<Produto> produtosPai;
 	private List<Produto> produtosFilho;
-	private List<Produto> produtosFilhosSelecionados;
 	private RepositorioEstruturaProduto repositorioEstruturaProduto;
 	private RepositorioProduto repositorioProduto;
 	private List<EstruturaProduto> allEstruturaProduto;
@@ -28,6 +25,15 @@ public class ControleEstruturaProduto {
 	public ControleEstruturaProduto() {
 		repositorioEstruturaProduto = new RepositorioEstruturaProduto();
 		repositorioProduto = new RepositorioProduto();
+		estruturaProduto = new EstruturaProduto();
+	}
+	
+	
+	public String salvar(){
+		estruturaProduto.setProdutoPai(repositorioProduto.ObterPorId(idPai));
+		estruturaProduto.setProdutoFilho(repositorioProduto.ObterPorId(idFilho));
+		repositorioEstruturaProduto.salvar(estruturaProduto);
+		return "listarEstruturaProdutos";
 	}
 	
 	public String novo(){
@@ -35,43 +41,15 @@ public class ControleEstruturaProduto {
 		return "formularioEstruturaProduto";
 	}
 	
-	public List<Produto> objetosSelecionados(){
-		List<Produto> produtos = new ArrayList<Produto>();	
-		for (int ids : idFilhos) {	
-				produtos.add(repositorioProduto.ObterPorId(ids));
-			}
-		return produtos;
-	}
-	
-	public String salvar(){
-		produtoPai = repositorioProduto.ObterPorId(idPai);
-		estruturaProduto.setProdutosFilho(produtosFilho);
-		estruturaProduto.setProdutoPai(produtoPai);
-		repositorioEstruturaProduto.salvar(estruturaProduto);
-		return "listarEstruturaProduto";
-	}
-
-	public String editar(){
-		return "formularioCliente";
-	}
-	
 	public String remover(){
 		repositorioEstruturaProduto.remover(estruturaProduto);
-		return "ListarEstruturaProduto";
+		return "listarEstruturaProdutos";
 	}
 	
-	public String cancelar(){
+	public String editar(){
 		return "formularioEstruturaProduto";
 	}
-	
-	
-	
-	
-	
-	//-------------------------------------------------------------------------------------------------------------//
 
-	
-	
 	public EstruturaProduto getEstruturaProduto() {
 		return estruturaProduto;
 	}
@@ -80,16 +58,24 @@ public class ControleEstruturaProduto {
 		this.estruturaProduto = estruturaProduto;
 	}
 
-	public Produto getProdutoPai() {
-		return produtoPai;
+	public int getIdPai() {
+		return idPai;
 	}
 
-	public void setProdutoPai(Produto produtoPai) {
-		this.produtoPai = produtoPai;
+	public void setIdPai(int idPai) {
+		this.idPai = idPai;
 	}
+
+	public int getIdFilho() {
+		return idFilho;
+	}
+
+	public void setIdFilho(int idFilho) {
+		this.idFilho = idFilho;
+	}
+
 
 	public List<Produto> getProdutosPai() {
-		produtosPai = repositorioProduto.listarTodos();
 		return produtosPai;
 	}
 
@@ -98,21 +84,11 @@ public class ControleEstruturaProduto {
 	}
 
 	public List<Produto> getProdutosFilho() {
-		produtosFilho = repositorioProduto.listarTodos();
 		return produtosFilho;
 	}
 
 	public void setProdutosFilho(List<Produto> produtosFilho) {
 		this.produtosFilho = produtosFilho;
-	}
-
-	public List<Produto> getProdutosFilhosSelecionados() {
-		return produtosFilhosSelecionados;
-	}
-
-	public void setProdutosFilhosSelecionados(
-			List<Produto> produtosFilhosSelecionados) {
-		this.produtosFilhosSelecionados = produtosFilhosSelecionados;
 	}
 
 	public RepositorioEstruturaProduto getRepositorioEstruturaProduto() {
@@ -132,28 +108,14 @@ public class ControleEstruturaProduto {
 		this.repositorioProduto = repositorioProduto;
 	}
 
-	public int getIdPai() {
-		return idPai;
-	}
-
-	public void setIdPai(int idPai) {
-		this.idPai = idPai;
-	}
-
 	public List<EstruturaProduto> getAllEstruturaProduto() {
 		allEstruturaProduto = repositorioEstruturaProduto.listarTodos();
 		return allEstruturaProduto;
 	}
 
-	public void setAllEstruturaProduto(List<EstruturaProduto> allEstruturaProduto) {
+	public void setAllEstruturaProduto(
+			List<EstruturaProduto> allEstruturaProduto) {
 		this.allEstruturaProduto = allEstruturaProduto;
 	}
 
-	public List<Integer> getIdFilhos() {
-		return idFilhos;
-	}
-
-	public void setIdFilhos(List<Integer> idFilhos) {
-		this.idFilhos = idFilhos;
-	}
 }

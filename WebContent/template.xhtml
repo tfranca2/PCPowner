@@ -49,7 +49,7 @@
 </script>
   
 </h:head>
-<body>
+<h:body>
     <div class="container">
     <h:form>
         <div class="masthead">
@@ -72,7 +72,7 @@
                                     <li class="divider"></li>
                                     <li> <h:commandLink action="#{controleOrdemDeProducao.novo}"> Ordem de Produção </h:commandLink> </li>
                                     <li> <h:commandLink action="#{controleLote.novo}"> Lote </h:commandLink> </li>
-                                    <li> <h:commandLink action="#{controleChaoDeFabrica.novo}"> Registro de Chão e Fábrica </h:commandLink> </li>
+                                    <li> <h:commandLink action="listarChaoDeFabrica.xhtml"> Registro de Chão e Fábrica </h:commandLink> </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -87,8 +87,7 @@
                                     <li> <a href="listarFornecedores.xhtml">Listar Fornecedores</a> </li>
                                     <li> <a href="listarProdutos.xhtml">Listar Produtos</a> </li>
                                     <li> <a href="listarOrdemDeProducao.xhtml">Listar Ordem e Produção</a> </li>
-                                    <li> <a href="">Relatório de Estrutura de Produto Acabado</a> </li>
-                                    <!-- <li> <a href="">Relatório de Estoque</a> </li> -->
+                                    <li> <a href="listarEstruturaProdutos.xhtml">Relatório de Estrutura de Produto Acabado</a> </li>
                                 </ul>
                             </li>
                         </ul>
@@ -111,6 +110,6 @@
 
     </div> 
 
-</body>
+</h:body>
 
 </html>
