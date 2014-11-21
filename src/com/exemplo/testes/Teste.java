@@ -1,6 +1,5 @@
 package com.exemplo.testes;
 
-import com.exemplo.entidade.EstruturaProduto;
 import com.exemplo.entidade.OrdemDeCompra;
 import com.exemplo.repositorio.RepositorioOrdemDeCompra;
 

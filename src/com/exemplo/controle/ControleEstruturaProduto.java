@@ -28,10 +28,10 @@ public class ControleEstruturaProduto {
 		estruturaProduto = new EstruturaProduto();
 	}
 
+
 	public String salvar() {
 		estruturaProduto.setProdutoPai(repositorioProduto.ObterPorId(idPai));
-		estruturaProduto
-				.setProdutoFilho(repositorioProduto.ObterPorId(idFilho));
+		estruturaProduto.setProdutoFilho(repositorioProduto.ObterPorId(idFilho));
 		repositorioEstruturaProduto.salvar(estruturaProduto);
 		return "listarEstruturaProdutos";
 	}
@@ -74,6 +74,7 @@ public class ControleEstruturaProduto {
 		this.idFilho = idFilho;
 	}
 
+	
 	public List<Produto> getProdutosPai() {
 		return produtosPai;
 	}

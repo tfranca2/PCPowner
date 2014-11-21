@@ -15,7 +15,6 @@ public class ControleCliente {
 	private List<Cliente> clientes;
 	private RepositorioCliente repositorioCliente;
 	
-	
 	public ControleCliente(){
 		repositorioCliente = new RepositorioCliente();
 	}

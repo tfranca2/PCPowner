@@ -83,4 +83,8 @@ public class RepositorioEstruturaProduto {
 		return filterProdutoFilho;
 	}
 	
+	public List<Produto> produtosFilho(){
+		
+		return null;
+	}
 }
